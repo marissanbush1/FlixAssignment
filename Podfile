@@ -6,7 +6,7 @@ target 'FlixAssignment' do
   use_frameworks!
 
   # Pods for FlixAssignment
-  pod 'AlamofireImage’
+  pod 'AlamofireImage', '~> 3.3'
   target 'FlixAssignmentTests' do
     inherit! :search_paths
     # Pods for testing
