@@ -30,6 +30,7 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
         
         movieTableView.dataSource = self
         movieTableView.delegate = self
+        movieTableView.rowHeight = 200
         fetchMovies()
 
         
