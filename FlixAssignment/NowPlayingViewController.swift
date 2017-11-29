@@ -71,6 +71,7 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
         let posterPathString = movie["poster_path"] as! String
         let baseURLString = "https://image.tmdb.org/t/p/w500"
         let posterURL = URL(string: baseURLString + posterPathString)!
+        //let backdrop = URL(string: baseURLString + )
         cell.titleLabel.text = title
         cell.overviewLabel.text = overview
         
@@ -84,14 +85,14 @@ class NowPlayingViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let cell = sender as! MovieCell
+        if let indexPath = movieTableView.indexPath(for: cell){
+            let movie = movies[indexPath.row]
+            let detailViewController = segue.destination as! DetailViewController
+            detailViewController.movie = movie
+        }
     }
-    */
 
 }
