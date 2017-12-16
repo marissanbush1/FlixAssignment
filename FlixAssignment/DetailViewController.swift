@@ -15,21 +15,19 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var backdropImage: UIImageView!
-    var movie: [String: Any]?
+    var movie: Movie?
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let movie = movie{
-            titleLabel.text = movie["title"] as? String
-            releaseDateLabel.text = movie["release_date"] as? String
-            overviewLabel.text = movie["overview"] as? String
-            let backdropPath = movie["backdrop_path"] as! String
-            let posterPath = movie["poster_path"] as! String
-            let baseURLString = "https://image.tmdb.org/t/p/w500"
-            let backdropURL = URL(string: baseURLString + backdropPath)!
-            backdropImage.af_setImage(withURL: backdropURL)
-            let posterURL = URL(string: baseURLString + posterPath)!
-            posterImage.af_setImage(withURL: posterURL)
+        self.navigationItem.title = "Detail"
+        
+        if let movie = movie {
+            titleLabel.text = movie.title
+            releaseDateLabel.text = movie.releaseDate
+            overviewLabel.text = movie.overview
             
+            backdropImage.af_setImage(withURL: movie.backdropURL)
+            
+            posterImage.af_setImage(withURL: movie.posterURL)
         }
         
         
